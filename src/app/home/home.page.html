@@ -5,6 +5,6 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-button>Login</ion-button>
-  <ion-button>Dashboard</ion-button>
+  <ion-button (click)="login()" expand="block">Login</ion-button>
+  <ion-button href="/dashboard" expand="block" routerDirection="forward">Dashboard</ion-button>
 </ion-content>

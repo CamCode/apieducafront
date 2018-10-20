@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './public/register/register.module#RegisterPageModule' },
   { path: 'dashboard', loadChildren: './members/dashboard/dashboard.module#DashboardPageModule' },
-  { path: 'members', loadChildren: './members/member-routing.module#MemberRoutingModule'
+  { path: 'members',  canActivate: [AuthGuardService], loadChildren: './members/member-routing.module#MemberRoutingModule'
   },
 ];
 
