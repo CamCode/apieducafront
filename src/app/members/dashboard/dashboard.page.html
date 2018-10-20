@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="logout()">
+      <ion-button (click)="logout()"  href="/home">
         <ion-icon slot="icon-only" name="log-out"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -10,5 +10,8 @@
 </ion-header>
  
 <ion-content padding>
- 
+  <h5>post</h5>
+  <ion-item *ngFor="let item of posts;">
+    <h6>{{item.title}}</h6>
+  </ion-item>
 </ion-content>

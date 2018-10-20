@@ -6,16 +6,25 @@ import { catchError, tap, map} from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'https://jsonplaceholder.typicode.com/'
+const apiUrl = 'https://jsonplaceholder.typicode.com'
 @Injectable({
   providedIn: 'root'
 })
 export class ApiRestService {
 
   constructor( private http: HttpClient) { }
-  get (data, endpoint):Observable<any>{
-
+  get (endpoint): Observable<any> {
+    return this.http.get(`${apiUrl}/${endpoint}`, httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.handleError)
+      );
   }
-  private handleError(error: HttpErrorResponse){}
-  
+  private extractData(res: Response){
+    const body = res;
+    return body || {};
+  }
+  private handleError(error: HttpErrorResponse){
+    return throwError('Algo salio mal')
+  }
 }
